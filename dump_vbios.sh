@@ -34,16 +34,20 @@ safety="yes"
 
 ########## DO NOT CHANGE BELOW THIS LINE #################################################################
 
+# shellcheck disable=SC2001
 gpuid=$(echo "${gpuid}" | sed 's/ *$//')
 
+# shellcheck disable=SC2001
 gpuid=$(echo "${gpuid}" | sed 's/^ *//g')
 
 dumpid="0000:${gpuid}"
 
 mygpu=$(lspci -s "${gpuid}")
 
+# shellcheck disable=SC2001
 disconnectid=$(echo "${dumpid}" | sed 's?:?\\:?g')
 
+# shellcheck disable=SC2001
 disconnectid2=$(echo "${disconnectid}" | sed 's/\(.*\)0/\11/')
 
 vganame=$( lspci | grep -i "${gpuid}" )
